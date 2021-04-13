@@ -9,32 +9,38 @@ class employee_wage_computation
 		int partTimeHr=4;
 		int empWage_perHr=20;
 		int dayPerMonth=20;
-		int salary;
-		int empCheck=(int)Math.floor(Math.random()*10)%3;
-
-		switch(empCheck)
-			{
-			case 2:
-				System.out.println("Employee is Present for Full Time ");
-<<<<<<< HEAD
-				salary=(fullTimeHr*empWage_perHr*dayPerMonth);
-				break;
-			case 1:
-				System.out.println("Employee is Present for Part Time");
-				salary=(partTimeHr*empWage_perHr*dayPerMonth);
-=======
-				salary=(fullTimeHr*empWage_perHr);
-				break;
-			case 1:
-				System.out.println("Employee is Present for Part Time");
-				salary=(partTimeHr*empWage_perHr);
->>>>>>> 5369d397cfee47ebbc8331f7f299eec7b53b4f0d
-				break;
-			default:
-				System.out.println("Employee is Absent ");
-				salary=0;
-				break;
+		int salary,empHr=0;
+		int workDays=0;
+		
+		for(int i=1;i<=30;i++)
+		{
+			int empCheck=(int)Math.floor(Math.random()*10)%3;
+			switch(empCheck)
+				{
+				case 2:
+					empHr=empHr+fullTimeHr;
+					workDays++;
+					break;
+				case 1:
+					empHr=empHr+partTimeHr;
+					workDays++;
+					break;
+				default:
+					salary=0;
+					break;
+				}
 		}
-		System.out.println(" Salary : " + salary);
+
+		if(empHr>=100 || workDays>=20)
+		{
+			System.out.println(" Total working hours : " + empHr);
+			salary=empWage_perHr*empHr;
+			System.out.println(" Salary : " + salary);
+		}
+		else
+		{
+			salary=0;
+			System.out.println(" Salary : " + salary);
+		}
 	}
 }
