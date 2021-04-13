@@ -11,20 +11,20 @@ class employee_wage_computation
 		int salary;
 		int empCheck=(int)Math.floor(Math.random()*10)%3;
 
-		if(empCheck==is_Full_Time)
-		{
-			System.out.println("Employee is Present for Full Time ");
-			salary=(fullTimeHr*empWage_perHr);
-		}
-		else if(empCheck==is_Part_Time)
-		{
-			System.out.println("Employee is Present for Part Time");
-			salary=(partTimeHr*empWage_perHr);
-		}
-		else
-		{
-			System.out.println("Employee is Absent ");
-			salary=0;
+		switch(empCheck)
+			{
+			case 2:
+				System.out.println("Employee is Present for Full Time ");
+				salary=(fullTimeHr*empWage_perHr);
+				break;
+			case 1:
+				System.out.println("Employee is Present for Part Time");
+				salary=(partTimeHr*empWage_perHr);
+				break;
+			default:
+				System.out.println("Employee is Absent ");
+				salary=0;
+				break;
 		}
 		System.out.println(" Salary : " + salary);
 	}
