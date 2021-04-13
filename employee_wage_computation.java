@@ -16,19 +16,11 @@ class employee_wage_computation
 			{
 			case 2:
 				System.out.println("Employee is Present for Full Time ");
-<<<<<<< HEAD
 				salary=(fullTimeHr*empWage_perHr*dayPerMonth);
 				break;
 			case 1:
 				System.out.println("Employee is Present for Part Time");
 				salary=(partTimeHr*empWage_perHr*dayPerMonth);
-=======
-				salary=(fullTimeHr*empWage_perHr);
-				break;
-			case 1:
-				System.out.println("Employee is Present for Part Time");
-				salary=(partTimeHr*empWage_perHr);
->>>>>>> 5369d397cfee47ebbc8331f7f299eec7b53b4f0d
 				break;
 			default:
 				System.out.println("Employee is Absent ");
