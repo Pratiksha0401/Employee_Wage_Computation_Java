@@ -8,6 +8,7 @@ class employee_wage_computation
 		int fullTimeHr=8;
 		int partTimeHr=4;
 		int empWage_perHr=20;
+		int dayPerMonth=20;
 		int salary;
 		int empCheck=(int)Math.floor(Math.random()*10)%3;
 
@@ -15,11 +16,11 @@ class employee_wage_computation
 			{
 			case 2:
 				System.out.println("Employee is Present for Full Time ");
-				salary=(fullTimeHr*empWage_perHr);
+				salary=(fullTimeHr*empWage_perHr*dayPerMonth);
 				break;
 			case 1:
 				System.out.println("Employee is Present for Part Time");
-				salary=(partTimeHr*empWage_perHr);
+				salary=(partTimeHr*empWage_perHr*dayPerMonth);
 				break;
 			default:
 				System.out.println("Employee is Absent ");
