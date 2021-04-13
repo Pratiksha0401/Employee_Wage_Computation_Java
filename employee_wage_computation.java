@@ -31,6 +31,7 @@ class employee_wage_computation
 				}
 		}
 
+<<<<<<< HEAD
 		if(empHr>=100 || workDays>=20)
 		{
 			System.out.println(" Total working hours : " + empHr);
@@ -41,6 +42,22 @@ class employee_wage_computation
 		{
 			salary=0;
 			System.out.println(" Salary : " + salary);
+=======
+		switch(empCheck)
+			{
+			case 2:
+				System.out.println("Employee is Present for Full Time ");
+				salary=(fullTimeHr*empWage_perHr*dayPerMonth);
+				break;
+			case 1:
+				System.out.println("Employee is Present for Part Time");
+				salary=(partTimeHr*empWage_perHr*dayPerMonth);
+				break;
+			default:
+				System.out.println("Employee is Absent ");
+				salary=0;
+				break;
+>>>>>>> e3fdc8dcda1a471b4a2e4b01885cbca4b7476411
 		}
 	}
 }
