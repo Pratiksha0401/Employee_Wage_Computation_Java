@@ -1,41 +1,40 @@
-
 class employee_wage_computation 
 {
+	public static final int IS_FULL_TIME=2;
+	public static final int IS_PART_TIME=1;
+	public static final int EMP_RATE_PER_HR=20;
+	public static final int NUM_OF_WORKING_DAYS=20;
+	public static final int MAX_HRS_IN_MONTH=100;
+	
 	public static void main(String[] args) 
 	{
-		int is_Full_Time=2;
-		int is_Part_Time=1;
-		int fullTimeHr=8;
-		int partTimeHr=4;
-		int empWage_perHr=20;
-		int dayPerMonth=20;
-		int salary,empHr=0;
-		int workDays=0;
+		int empHrs=0;
+		int totalHrs=0;
+		int totalWorkingDays=0;
 		
-		for(int i=1;i<=30;i++)
-		{
-			int empCheck=(int)Math.floor(Math.random()*10)%3;
-			switch(empCheck)
-				{
-				case 2:
-					empHr=empHr+fullTimeHr;
-					workDays++;
+		while (totalHrs <= MAX_HRS_IN_MONTH
+			&& totalWorkingDays <NUM_OF_WORKING_DAYS) {
+
+			totalWorkingDays++;
+
+			int empCheck = ((int) Math.floor(Math.random() * 10)) % 3;
+
+			switch (empCheck) {
+				case IS_FULL_TIME:
+					empHrs = 8;
 					break;
-				case 1:
-					empHr=empHr+partTimeHr;
-					workDays++;
+				case IS_PART_TIME:
+					empHrs = 4;
 					break;
 				default:
-					salary=0;
+					empHrs = 0;
 					break;
-				}
+			}
+			totalHrs += empHrs;
+			System.out.println("Day# : "+totalWorkingDays+ " Emp hrs : " +  empHrs);
+			
 		}
-
-		if(empHr>=100 || workDays>=20)
-		{
-			System.out.println(" Total working hours : " + empHr);
-			salary=empWage_perHr*empHr;
-			System.out.println(" Salary : " + salary);
-		}
+		int totalEmpWage = (totalHrs * EMP_RATE_PER_MONTH);
+		System.out.println("Total Employee wage : "+totalEmpWage);
 	}
 }
