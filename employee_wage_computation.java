@@ -6,17 +6,15 @@ class employee_wage_computation
 	public static final int NUM_OF_WORKING_DAYS=20;
 	public static final int MAX_HRS_IN_MONTH=100;
 	
-	public static void main(String[] args) 
-	{
+	public static int computeEmpWage(){
 		int empHrs=0;
 		int totalHrs=0;
 		int totalWorkingDays=0;
 		
 		while (totalHrs <= MAX_HRS_IN_MONTH
-			&& totalWorkingDays <NUM_OF_WORKING_DAYS) {
-
+			&& totalWorkingDays <NUM_OF_WORKING_DAYS) 
+			{
 			totalWorkingDays++;
-
 			int empCheck = ((int) Math.floor(Math.random() * 10)) % 3;
 
 			switch (empCheck) {
@@ -36,5 +34,10 @@ class employee_wage_computation
 		}
 		int totalEmpWage = (totalHrs * EMP_RATE_PER_HR);
 		System.out.println("Total Employee wage : "+totalEmpWage);
-	}
+		return totalEmpWage;
+		}
+	public static void main(String[] args) 
+	{
+		computeEmpWage();
+}
 }
