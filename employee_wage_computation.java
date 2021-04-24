@@ -6,7 +6,6 @@ public class employee_wage_computation implements EmpComputeWage {
 	public static final int IS_FULL_TIME = 2;
 
 	private List<Company> list = new ArrayList<>();
-	private Map<String,Company> map=new HashMap<>();
 
 	@Override
 	public int getWagesByCompanyName(String name){
@@ -22,9 +21,8 @@ public class employee_wage_computation implements EmpComputeWage {
 		return totalWage;
 	}
 	@Override
-	public void addCompany(final Company company, String name){
+	public void addCompany(final Company company){
 		list.add(company);
-		map.put(name,company);
 	}
 
 	@Override
@@ -33,12 +31,8 @@ public class employee_wage_computation implements EmpComputeWage {
 	}
 	@Override
 	public void calculateWage(){
-		for(int i= 0; i< list.size(); i++){
-		 	calculate(list.get(i));
-		 }
 		list.forEach(this::calculate);
 	}
-
 	private void calculate(final Company company) {
 		int totalEmpHours = 0;
 		int empHours = 0;
@@ -54,33 +48,27 @@ public class employee_wage_computation implements EmpComputeWage {
 			switch (empCheck) {
 				case IS_FULL_TIME:
 					empHours = 8;
-					//System.out.println("Employee is present full-time on day " + totalWorkingDays);
 				break;
 				case IS_PART_TIME:
 					empHours = 4;
-					//System.out.println("Employee is present part-time on day " + totalWorkingDays);
 				break;
 				default:
 					empHours = 0;
-					//System.out.println("Employee is abscent on day " + totalWorkingDays);
 			}
 			totalEmpHours += empHours;
-			//System.out.println("Day# : "+totalWorkingDays+ " Emp hrs : " +  empHours);
-			
+
 		}
 		int totalEmpWage = totalEmpHours * company.getEmpRatePerHrs();
 		company.setTotalEmpWage(totalEmpWage);
 	}
 
 	public static void main(String[] args) {
-		// Directly calling function without creating obj 'cause its a static one.
 		employee_wage_computation ebi = new employee_wage_computation();
 		Company company1 = new Company("Dmart", 20, 10, 100);
-		ebi.addCompany(company1,"Dmart");
-		Company company2 = new Company("Big Bazar", 20, 5, 100);
-		ebi.addCompany(company2,"Big Bazar");
+		ebi.addCompany(company1);
+		Company company2 = new Company("JioMart", 20, 5, 100);
+		ebi.addCompany(company2);
 
-		//Calculate
 		ebi.calculateWage();
 		ebi.print();
 		int totalWages = ebi.getWagesByCompanyName("Dmart");
@@ -92,7 +80,7 @@ public class employee_wage_computation implements EmpComputeWage {
 }
 
 interface EmpComputeWage {
-	void addCompany(Company company,String name);
+	void addCompany(Company company);
 	void calculateWage();
 	void print();
 	int getWagesByCompanyName(String name);
